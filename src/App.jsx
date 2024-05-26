@@ -1,26 +1,24 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home'; 
+import Home from './pages/Home';
 import Post from './pages/Post'
 import Collection from './pages/Collection'
-import Guide from './pages/Guide'
+import Guide from './pages/MyPage.jsx'
 import data from '../data.js'
+import MySection from './components/MySection.jsx';
+import MyPage from './pages/MyPage.jsx';
 
 function App() {
   console.log(data)
   return (
     <Router>
       <Routes>
-        {/* Route for the root URL */}
-        {
-          data.map((data)=>(
-            <Route path={data.pagePath} element={<Guide pageData={data}/>} />
-          ))
-        }
-        {/* Other routes
-        <Route path="/collection" element={<Collection />} />
-        <Route path="/post" element={<Post />} />
-        <Route path="/guide" element={<Guide />} /> */}
+        <Route path='/' element={<Home/>} />
+        {/* Other routes */}
+        {data.map((page, index) => (
+          <Route key={index} path={page.pagePath} element={<MyPage pageData={page}/>} />
+        ))}
+        
 
       </Routes>
     </Router>
