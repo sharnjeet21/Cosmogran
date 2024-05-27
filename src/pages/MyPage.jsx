@@ -1,44 +1,61 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Sidebar from '../components/Sidebar';
-import Navbar from '../components/Navbar';
+import Snavbar from '../components/Snavbar';
+import Subbar from '../components/SubNavbar'; // Import the SubNavbar component
 import MySection from '../components/MySection';
+import '../components/ScrollbarHide.css';
 
-const SidebarData = [
-  { key: 0, title: 'Adblocking', path: '/' },
-  { key: 1, title: 'Artificial Intelligence', path: '' },
-  { key: 2, title: 'Movies/TV', path: '' },
-  { key: 3, title: 'Music/Podcast', path: '' },
-  { key: 4, title: 'Games/Emulation', path: '' },
-  { key: 5, title: 'Books/Comics', path: '' },
-  { key: 6, title: 'Downloading', path: '' },
-  { key: 7, title: 'Torrenting', path: '' },
-  { key: 8, title: 'Android/IOS', path: '' },
-  { key: 9, title: 'Linux/MacOS', path: '' },
-  { key: 10, title: 'Non-English', path: '' },
-  { key: 11, title: 'Miscellaneous', path: '' }
-];
+export default function MyPage({ pageData, SidebarData }) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const sidebarRef = useRef(null);
+  const menuButtonRef = useRef(null);
 
-export default function MyPage({ pageData }) {
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target) && !menuButtonRef.current.contains(event.target)) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
+  const toggleSidebar = (event) => {
+    event.stopPropagation(); // Prevent click event from propagating to document
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <div>
-      <Navbar />
+      <Snavbar />
+      <Subbar isVisible={window.innerWidth < 1024}/>
       <div className="flex h-screen">
-        <div className="fixed top-0 w-64 pl-9 h-full bg-[#181818] overflow-y-auto">
+        {/* Conditionally render the sidebar based on screen size and state */}
+        <div ref={sidebarRef} className={`fixed z-30 top-0 w-64 pl-9 h-full bg-[#181818] overflow-y-auto scrollbar-hide lg:block ${isSidebarOpen ? '' : 'hidden'}`}>
+          {/* Add 'scrollbar-hide' class here */}
           <Sidebar data={SidebarData} />
         </div>
-        <div className="flex-1 overflow-y-auto bg-[#181818] ml-8 lg:ml-28 ">
-          <div className="relative px-12 pt-28 lg:pl-48 lg:pt-24">
+        <div className="flex-1 overflow-y-auto bg-[#1a1a1a] lg:ml-28 ">
+          <div className="relative px-12 lg:pt-28 lg:pl-48 pt-24 ">
             <div>
               <h1 className="text-[#7bc5e4] font-semibold underline text-4xl">{pageData.pageTitle}</h1>
               <h1 className="text-[#5a5a5d]">{pageData.pageDesc}</h1>
               <h2 className=' h-px my-6 mt-12  bg-[#96969c] border-0' />
-              {pageData.sections.map((section, index) => (
-                <MySection key={index} section={section} />
+              {pageData.sections.map((section, index, title) => (
+                <MySection key={index} title={title} section={section} />
               ))}
             </div>
             <h2 className="text-sm text-gray-400 no-underline mt-1 block"></h2>
           </div>
         </div>
+      </div>
+      {/* Menu button for mobile screens */}
+      <div ref={menuButtonRef} className="fixed lg:hidden flex justify-center top-16 pt-3 ">
+        <button onClick={toggleSidebar} className="text-white py-2 px-4 rounded">Menu</button>
       </div>
     </div>
   );

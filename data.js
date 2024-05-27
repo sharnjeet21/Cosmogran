@@ -6,6 +6,7 @@ const data = [
         "sections": [
             {
                 "title": "Adblocking",
+                "titleTip": true,
                 "links": [
                     {
                         "id": 0,

@@ -38,7 +38,7 @@ const buttonData = [
   {
     key: 0,
     title: 'Browse Collection',
-    path: '/collection'
+    path: '/adblockvpnguide'
   },
   {
     key: 1,
