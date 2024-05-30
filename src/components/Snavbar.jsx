@@ -25,18 +25,18 @@ const Navbar = () => {
   ];
 
   return (
-    <div className={`fixed z-10 flex justify-between bg-[#1a1a1a] items-center h-16 max-w-[100vw] w-[calc(100vw)] px-4 text-white text-xs pr-8 ${nav ? 'shadow-md' : ''}`}>
+    <div className={`fixed z-10 flex justify-between bg-primary items-center h-16 max-w-[100vw] w-[calc(100vw)] px-4 text-white text-xs pr-8 ${nav ? 'shadow-md' : ''}`}>
       <div className='flex items-center'>
         <img src={logo} alt="Logo" className="h-6" />
-        <h1 className='text-base font-normal text-white pl-2'>Cosmogran</h1>
+        <h1 className='text-base font-normal font-Outfit text-secondary pl-2'>Cosmogran</h1>
       </div>
 
       <div className='flex'>
-        <ul className='hidden md:flex'>
+        <ul className='hidden md:flex text-secondary font-Outfit'>
           {navItems.map(item => (
             <li
               key={item.id}
-              className={`p-4 hover:bg-transparent rounded-xl m-2 cursor-pointer duration-300 ${selectedItem === item.id ? 'text-cyan-500' : ''}`}
+              className={`p-4 hover:bg-transparent rounded-xl m-2 cursor-pointer duration-300 hover:text-orange ${selectedItem === item.id ? 'text-orange' : ''}`}
               onClick={() => handleItemClick(item.id)}
             >
               {item.path ? (
@@ -49,7 +49,7 @@ const Navbar = () => {
         </ul>
 
         <div className='hidden md:flex'>
-          <img src={github} alt="GitHub" className="h-10 mr-2 pt-5 invert" />
+          <img src={github} alt="GitHub" className="h-10 mr-2 pt-5 invert " />
           <img src={discord} alt="Discord" className="h-10 mr-2 pt-5 invert" />
           <img src={reddit} alt="Reddit" className="h-10 pt-5 invert" />
         </div>
@@ -72,7 +72,7 @@ const Navbar = () => {
         {navItems.map(item => (
           <li
             key={item.id}
-            className={`p-4 border-b border-gray-700 text-white ${selectedItem === item.id ? 'text-cyan-500' : ''}`}
+            className={`p-4 border-b border-gray-700 text-secondary ${selectedItem === item.id ? 'text-cyan-500' : ''}`}
             onClick={() => handleItemClick(item.id)}
           >
             {item.path ? (

@@ -21,9 +21,9 @@ const BulbIcon = () => (
 
 export default function TipCard() {
     return (
-        <div className="relative drop-shadow-xl lg:w-4/6 lg:h-28 h-40 overflow-hidden rounded-xl bg-[#04694c]">
-            <div className="absolute pt-2 flex flex-col pl-5 text-sm  text-[#1a9468] z-[1] opacity-90 rounded-xl inset-0.5 bg-[#1c2423]">
-                <div className="flex items-center font-bold">
+        <div className="relative drop-shadow-xl lg:w-4/6 lg:h-28 h-40 overflow-hidden rounded-xl bg-green">
+            <div className="absolute pt-2 flex flex-col pl-5 text-sm  text-green z-[1] opacity-90 rounded-xl inset-0.5 bg-[#1c2423]">
+                <div className="flex items-center font-bold font-Outfit">
                     <BulbIcon />
                     <h1>Tip</h1>
                 </div>

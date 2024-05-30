@@ -1,5 +1,5 @@
 const SidebarData = [
-    { key: 0, title: 'Adblocking', path: '/' },
+    { key: 0, title: 'Adblocking', path: '/adblockvpnguide' },
     { key: 1, title: 'Artificial Intelligence', path: '' },
     { key: 2, title: 'Movies/TV', path: '' },
     { key: 3, title: 'Music/Podcast', path: '' },

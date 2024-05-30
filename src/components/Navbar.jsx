@@ -28,7 +28,7 @@ const Navbar = () => {
     <div className={`fixed flex z-30 justify-between items-center h-16 max-w-[100vw] w-[calc(100vw)] px-4 text-white text-xs pr-8 ${nav ? 'shadow-md' : ''}`}>
       <div className='flex items-center'>
         <img src={logo} alt="Logo" className="h-6" />
-        <h1 className='text-base font-normal text-white pl-2'>Cosmogran</h1>
+        <h1 className='text-base font-normal font-Rey text-white pl-2'>Cosmogran</h1>
       </div>
 
       <div className='flex'>
@@ -36,7 +36,7 @@ const Navbar = () => {
           {navItems.map(item => (
             <li
               key={item.id}
-              className={`p-4 hover:bg-transparent rounded-xl m-2 cursor-pointer duration-300 ${selectedItem === item.id ? 'text-cyan-500' : ''}`}
+              className={`p-4 hover:bg-transparent rounded-xl m-2 cursor-pointer font-Outfit duration-300 ${selectedItem === item.id ? 'text-cyan-500' : ''}`}
               onClick={() => handleItemClick(item.id)}
             >
               {item.path ? (
@@ -68,11 +68,11 @@ const Navbar = () => {
             : 'ease-in-out w-[80%] duration-500 fixed top-0 bottom-0 left-[-100%]'
         }
       >
-        <h1 className='w-full text-3xl font-bold font-PlayfairDisplay bg-gradient-to-r from-violet-600 via-pink-500 to-blue-400 inline-block text-transparent bg-clip-text m-4 mb-4'>COSMOS</h1>
+        <h1 className='w-full text-3xl font-bold font-Rey bg-gradient-to-r from-violet-600 via-pink-500 to-blue-400 inline-block text-transparent bg-clip-text m-4 mb-4'>COSMOS</h1>
         {navItems.map(item => (
           <li
             key={item.id}
-            className={`p-4 border-b border-gray-700 text-white ${selectedItem === item.id ? 'text-cyan-500' : ''}`}
+            className={`p-4 border-b border-gray-700 font-Outfit text-white ${selectedItem === item.id ? 'text-cyan-500' : ''}`}
             onClick={() => handleItemClick(item.id)}
           >
             {item.path ? (
