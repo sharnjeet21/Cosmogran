@@ -9,27 +9,27 @@ const cardData = [
     key: 0,
     title: 'Movies/Shows',
     desc: 'Stream,Download your favourite movies and shows from best website in one click',
-    path: '/movies'
+    path: '/videopiracyguide'
   },
   {
     key: 1,
     title: 'Music/Podcasts',
     desc: 'Stream,Download your favourite muisc and podcasts from best website in one click',
-    path: '/music'
+    path: '/audiopiracyguide'
 
   },
   {
     key: 2,
     title: 'Emulation/Games',
     desc: 'Download and Torrent your favourite games from best website in one click',
-    path: '/games'
+    path: '/gamingpiracyguide'
 
   },
   {
     key: 3,
     title: 'Books/Comics',
     desc: 'Read,Listen,Download your favourite books and comics from best website in one click',
-    path: '/books'
+    path: '/readingpiracyguide'
 
   }
 ]
@@ -59,7 +59,7 @@ function Home() {
       <img src={cosmos} alt="Logo" className='fixed z-20 w-[calc(120vw)] h-[calc(100vh)]' />
       <div className='pl-6 md:pl-28 md:pr-28 pt-20'> 
         <div className="absolute text-white z-20 opacity-70 backdrop-blur-20 mt-14 md:mt-28">
-        <p className="font-extrabold text-6xl bg-gradient-to-r from-violet-600 via-pink-500 to-blue-400 inline-block text-transparent bg-clip-text uppercase font-Rey">Cosmogran</p>
+        <p className=" text-6xl bg-gradient-to-r from-violet-600 via-pink-500 to-blue-400 inline-block text-transparent bg-clip-text uppercase font-Rey">Cosmogran</p>
           <p className='text-3xl font-semibold mt-3 font-Outfit'>Your Gateway to Tailored Excellence...</p>
           <p className='text-xl font-medium font-Outfit'>The largest collection of free stuff on the internet!</p>
         </div>
