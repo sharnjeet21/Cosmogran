@@ -8,7 +8,9 @@ const Sidebar = ({ data }) => {
     <div className='pt-5 bg-primary pl-7'>
         <div className='flex items-center'>
         <img src={logo} alt="Logo" className="h-6" />
+        <a href='/'>
         <h1 className='text-base font-normal text-secondary font-Rey pl-2'>Cosmogran</h1>
+        </a>
       </div>
       <h2 className=' h-px my-5 mr-8 bg-[#28282b] border-0' />
 

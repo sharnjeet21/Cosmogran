@@ -3,7 +3,7 @@ import Sidebar from '../components/Sidebar';
 import Snavbar from '../components/Snavbar';
 import Subbar from '../components/SubNavbar';
 import MySection from '../components/MySection';
-import Rightbar from '../components/RightBar'; // Import the Rightbar component
+import Rightbar from '../components/RightBar';
 import '../components/ScrollbarHide.css';
 
 export default function MyPage({ pageData, linkData }) {
@@ -12,7 +12,7 @@ export default function MyPage({ pageData, linkData }) {
   const [currentSection, setCurrentSection] = useState('');
   const sidebarRef = useRef(null);
   const menuButtonRef = useRef(null);
-  const rightbarButtonRef = useRef(null); // Ref for On This Page button
+  const rightbarButtonRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -34,13 +34,13 @@ export default function MyPage({ pageData, linkData }) {
   const toggleSidebar = (event) => {
     event.stopPropagation();
     setIsSidebarOpen(!isSidebarOpen);
-    setIsRightbarVisible(false); // Close rightbar when opening sidebar
+    setIsRightbarVisible(false);
   };
 
   const toggleRightbar = (event) => {
     event.stopPropagation();
     setIsRightbarVisible(!isRightbarVisible);
-    setIsSidebarOpen(false); // Close sidebar when opening rightbar
+    setIsSidebarOpen(false);
   };
 
   useEffect(() => {
@@ -72,7 +72,6 @@ export default function MyPage({ pageData, linkData }) {
       <Snavbar />
       <Subbar isVisible={window.innerWidth < 768} />
       <div className="flex h-screen">
-        {/* Sidebar with conditional display and adjusted z-index */}
         <div ref={sidebarRef} className={`fixed z-50 top-0 w-64 h-full bg-primary overflow-y-auto scrollbar-hide lg:block ${isSidebarOpen ? '' : 'hidden'}`}>
           <Sidebar data={linkData} />
         </div>
@@ -89,15 +88,13 @@ export default function MyPage({ pageData, linkData }) {
           </div>
         </div>
       </div>
-      {/* Menu button with fixed position and adjusted z-index */}
-      <div className="fixed lg:hidden flex justify-between items-center top-16 w-full px-4 z-40">
-        <button ref={menuButtonRef} onClick={toggleSidebar} className="text-secondary py-2 px-4 rounded bg-primary">Menu</button>
+      <div className="fixed lg:hidden flex justify-between items-center top-16 w-full px-4 z-0">
+        <button ref={menuButtonRef} onClick={toggleSidebar} className="text-secondary py-5 px-4 rounded ">Menu</button>
         {!isRightbarVisible && (
-          <button ref={rightbarButtonRef} onClick={toggleRightbar} className="text-secondary py-5 px-4 rounded bg-primary">On This Page</button>
+          <button ref={rightbarButtonRef} onClick={toggleRightbar} className="text-secondary my-5 px-4 rounded ">On This Page</button>
         )}
       </div>
-      {/* Rightbar with conditional visibility based on state */}
-      <Rightbar sections={pageData.sections} currentSection={currentSection} isVisible={isRightbarVisible} />
+      <Rightbar sections={pageData.sections} currentSection={currentSection} isVisible={isRightbarVisible || window.innerWidth >= 1024} />
     </div>
   );
 }

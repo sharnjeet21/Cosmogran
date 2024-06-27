@@ -19,9 +19,8 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { id: 1, text: 'Beginners Guide', path: '/guide' },
+    { id: 1, text: 'Beginners Guide', path: 'https://rentry.co/fmhy-guides' },
     { id: 2, text: 'Glossary', path: 'https://rentry.org/The-Piracy-Glossary' },
-    { id: 5, text: 'Ecosystem', path: '/ecosys' },
   ];
 
   return (
@@ -36,7 +35,7 @@ const Navbar = () => {
           {navItems.map(item => (
             <li
               key={item.id}
-              className={`p-4 hover:bg-transparent rounded-xl m-2 cursor-pointer font-Outfit duration-300 ${selectedItem === item.id ? 'text-cyan-500' : ''}`}
+              className={`p-4 hover:bg-transparent hover:text-cyan-500 rounded-xl m-2 cursor-pointer font-Outfit duration-300 ${selectedItem === item.id ? 'text-cyan-500' : ''}`}
               onClick={() => handleItemClick(item.id)}
             >
               {item.path ? (
@@ -49,9 +48,15 @@ const Navbar = () => {
         </ul>
 
         <div className='hidden md:flex'>
-          <img src={github} alt="GitHub" className="h-10 mr-2 pt-5 invert" />
-          <img src={discord} alt="Discord" className="h-10 mr-2 pt-5 invert" />
-          <img src={reddit} alt="Reddit" className="h-10 pt-5 invert" />
+          <a href='https://github.com/sharnjeet21/'>
+            <img src={github} alt="GitHub" className="h-10 mr-3 pt-5 invert " />
+          </a>
+          <a href='https://discord.com/invite/9gPutjEK'>
+            <img src={discord} alt="Discord" className="h-10 mr-3 pt-5 invert" />
+          </a>
+          <a href='https://www.reddit.com/user/No-Faithlessness4765/'>
+            <img src={reddit} alt="Reddit" className="h-10 pt-5 invert" />
+          </a>
         </div>
       </div>
 
@@ -64,11 +69,13 @@ const Navbar = () => {
       <ul
         className={
           nav
-            ? 'fixed md:hidden left-0 top-0 w-[80%] h-full bg-gradient-to-b from-gray-900 to-gray-800 ease-in-out duration-500 z-50 border border-white rounded-lg'
+            ? 'fixed md:hidden left-0 top-0 w-[60%] h-full backdrop-blur-2xl ease-in-out duration-500 z-50 border border-white rounded-lg'
             : 'ease-in-out w-[80%] duration-500 fixed top-0 bottom-0 left-[-100%]'
         }
       >
-        <h1 className='w-full text-3xl font-bold font-Rey bg-gradient-to-r from-violet-600 via-pink-500 to-blue-400 inline-block text-transparent bg-clip-text m-4 mb-4'>COSMOS</h1>
+        <a href='/'>
+          <h1 className='w-full text-3xl px-3 py-3 font-Rey bg-gradient-to-r from-violet-600 via-pink-500 to-blue-400 inline-block text-transparent bg-clip-text m-4 mb-4'>COSMOGRAN</h1>
+        </a>
         {navItems.map(item => (
           <li
             key={item.id}
