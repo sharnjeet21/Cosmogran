@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../assets/logo.png';
+import { Link } from 'react-router-dom';
 
 
 const Sidebar = ({ data }) => {
@@ -8,19 +9,19 @@ const Sidebar = ({ data }) => {
     <div className='pt-5 bg-primary pl-7'>
         <div className='flex items-center'>
         <img src={logo} alt="Logo" className="h-6 rounded-full" />
-        <a href='/'>
+        <Link to='/'>
         <h1 className='text-base font-normal text-secondary font-Rey pl-2'>Cosmogran</h1>
-        </a>
+        </Link>
       </div>
       <h2 className=' h-px my-5 mr-8 bg-[#28282b] border-0' />
 
       <ul>
         {data.sidebarData.map((item) => (
-          <a href={item.path}>
+          <Link to={item.path}>
           <li key={item.key} className="p-2 text-sm font-Outfit text-secondary">
             {item.title}
           </li>
-          </a>
+          </Link>
         ))}
       </ul>
 
@@ -28,11 +29,11 @@ const Sidebar = ({ data }) => {
       <ul>
         <span>{data.sidebarLinkData.heading}</span>
         {data.sidebarLinkData[0].links.map((item) => (
-          <a href={item.path}>
+          <Link to={item.path}>
           <li key={item.key} className="p-2 text-sm font-Outfit text-secondary">
             {item.title}
           </li>
-          </a>
+          </Link>
         ))}
       </ul>
       
