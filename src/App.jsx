@@ -1,9 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Post from './pages/Post'
-import Collection from './pages/Collection'
-import Guide from './pages/MyPage.jsx'
 import data from '../data.js'
 import MyPage from './pages/MyPage.jsx';
 import linkData from '../linkData.js';

@@ -10,13 +10,13 @@ const MySection = ({ section }) => {
             </Link>
             {section.titleTip && <TipCard />}
             <div className='items-center font-Outfit'>
-                <ul className=' pt-3 '>
+                <ul className='pt-3'>
                     {section.links.map(link => (
                         <li key={link.id}>
-                            <Link href={link.href} target="_blank" rel="noopener noreferrer" className='text-orange font-semibold'>
-                                {link.isstar === "true" ? "⭐" : ""} {link.desc} {"- "}
+                            <a href={link.href} target="_blank" rel="noopener noreferrer" className='text-orange font-semibold'>
+                                {link.desc} {"- "}
                                 <span className='text-secondary'>{link.sub}</span>
-                            </Link>
+                            </a>
                         </li>
                     ))}
                 </ul>

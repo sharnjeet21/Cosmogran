@@ -27,9 +27,9 @@ const linkData = {
           { key: 12, title: 'Text Tools', path: '/text-tools' },
           { key: 12, title: 'Gaming Tools', path: '/gaming-tools' },
           { key: 12, title: 'Image Tools', path: '/img-tools' },
-          { key: 12, title: 'Video  Tools', path: '/videotools' },
-          { key: 12, title: 'Audio Tools', path: '/audiopiracyguide#audio-tools' },
-          { key: 12, title: 'Educational Tools', path: '/edupiracyguide#educational-tools' },
+          { key: 12, title: 'Video  Tools', path: '/video-tools' },
+          { key: 12, title: 'Audio Tools', path: '/audiopiracyguide#Audio%20Tools%20%E2%80%8B' },
+          { key: 12, title: 'Educational Tools', path: '/edupiracyguide#Educational%20Tools%20%E2%80%8B' },
           { key: 12, title: 'Developer Tools', path: '/devtools' },
 
         ]
