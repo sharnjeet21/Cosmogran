@@ -3,7 +3,7 @@ import TipCard from './TipCard';
 
 const MySection = ({ section }) => {
     return (
-        <div>
+        <section id={section.title}>
             <a href={section.titlePath} target="_blank" rel="noopener noreferrer" className='pt-6 pb-2 text-secondary  font-Rey text-2xl block'>
                 {section.title}
             </a>
@@ -20,7 +20,7 @@ const MySection = ({ section }) => {
                     ))}
                 </ul>
             </div>
-        </div>
+        </section>
     );
 };
 

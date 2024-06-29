@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import logo from '../assets/fmhy.ico';
+import logo from '../assets/logo.png';
 import github from '../assets/github.png';
 import reddit from '../assets/reddit.png';
 import discord from '../assets/discord.svg';
@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <div className={`fixed flex z-30 justify-between items-center h-16 max-w-[100vw] w-[calc(100vw)] px-4 text-white text-xs pr-8 ${nav ? 'shadow-md' : ''}`}>
       <div className='flex items-center'>
-        <img src={logo} alt="Logo" className="h-6" />
+        <img src={logo} alt="Logo" className="h-6 rounded-full" />
         <h1 className='text-base font-normal font-Rey text-white pl-2'>Cosmogran</h1>
       </div>
 

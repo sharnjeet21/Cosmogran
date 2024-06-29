@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/fmhy.ico';
+import logo from '../assets/logo.png';
 
 
 const Sidebar = ({ data }) => {
@@ -7,7 +7,7 @@ const Sidebar = ({ data }) => {
   return (
     <div className='pt-5 bg-primary pl-7'>
         <div className='flex items-center'>
-        <img src={logo} alt="Logo" className="h-6" />
+        <img src={logo} alt="Logo" className="h-6 rounded-full" />
         <a href='/'>
         <h1 className='text-base font-normal text-secondary font-Rey pl-2'>Cosmogran</h1>
         </a>
