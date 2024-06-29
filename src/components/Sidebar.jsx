@@ -29,11 +29,11 @@ const Sidebar = ({ data }) => {
       <ul>
         <span>{data.sidebarLinkData.heading}</span>
         {data.sidebarLinkData[0].links.map((item) => (
-          <Link to={item.path}>
+          <a href={item.path}>
           <li key={item.key} className="p-2 text-sm font-Outfit text-secondary">
             {item.title}
           </li>
-          </Link>
+          </a>
         ))}
       </ul>
       
