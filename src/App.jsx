@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import data from '../data.js'
 import MyPage from './pages/MyPage.jsx';
 import linkData from '../linkData.js';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 
 function App() {

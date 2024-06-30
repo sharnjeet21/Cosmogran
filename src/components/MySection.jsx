@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const MySection = ({ section }) => {
     return (
-        <section id={section.title}>
+        <section id={section.title} >
             <Link to={section.titlePath} target="_blank" rel="noopener noreferrer" className='pt-6 pb-2 text-secondary  font-Rey text-2xl block'>
                 {section.title}
             </Link>

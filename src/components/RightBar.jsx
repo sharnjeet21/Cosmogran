@@ -19,7 +19,7 @@ const Rightbar = ({ sections, currentSection, isVisible, onClose }) => {
   }, [onClose]);
 
   return (
-    <div ref={rightbarRef} className={`fixed right-0 top-0 sm:top-16 w-52 h-full lg:bg-primary backdrop-blur-3xl overflow-y-auto scrollbar-hide ${isVisible ? 'block' : 'hidden'}`}>
+    <div ref={rightbarRef} className={`fixed right-0 top-0 sm:top-16 w-52 h-full sm:z-30 lg:bg-primary backdrop-blur-3xl overflow-y-auto scrollbar-hide ${isVisible ? 'block' : 'hidden'}`}>
       <div className="flex justify-between items-center px-4 pt-4">
         <h2 className="text-lg font-Rey text-secondary">On This Page</h2>
       </div>

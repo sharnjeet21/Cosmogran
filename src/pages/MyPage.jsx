@@ -12,10 +12,11 @@ export default function MyPage({ pageData, linkData }) {
   const [currentSection, setCurrentSection] = useState('');
   const [searchInput, setSearchInput] = useState('');
   const [filteredSections, setFilteredSections] = useState(pageData.sections); // Initially, show all sections
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
   const sidebarRef = useRef(null);
   const menuButtonRef = useRef(null);
-  const rightbarButtonRef = useRef(null);
-  const rightbarRef = useRef(null); // Ref for the Rightbar component
+  const rightbarButtonRef = useRef(null); // Ref for the Rightbar component
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -24,7 +25,7 @@ export default function MyPage({ pageData, linkData }) {
         setIsSidebarOpen(false);
       }
       // Close rightbar if clicking outside
-      if (rightbarRef.current && !rightbarRef.current.contains(event.target) && !rightbarButtonRef.current.contains(event.target)) {
+      if (rightbarButtonRef.current && !rightbarButtonRef.current.contains(event.target)) {
         setIsRightbarVisible(false);
       }
     };
@@ -72,6 +73,18 @@ export default function MyPage({ pageData, linkData }) {
     }
   }, [searchInput, pageData.sections]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const toggleSidebar = (event) => {
     event.stopPropagation();
     setIsSidebarOpen(!isSidebarOpen);
@@ -90,15 +103,17 @@ export default function MyPage({ pageData, linkData }) {
 
   return (
     <div>
-      <Snavbar handleSearch={handleSearchInputChange} />
-      <div className="relative">
-        <Subbar isVisible={window.innerWidth < 768} />
+      <div >
+        <Snavbar handleSearch={handleSearchInputChange} />
+        <div className="relative">
+          {isMobile && <Subbar />}
+        </div>
         <div className="flex h-screen">
-          <div ref={sidebarRef} className={`fixed z-50 top-0 w-64 h-full bg-primary overflow-y-auto scrollbar-hide lg:block ${isSidebarOpen ? '' : 'hidden'}`}>
+          <div ref={sidebarRef} className={`fixed z-10 top-0 w-64 h-full bg-primary overflow-y-auto scrollbar-hide lg:block ${isSidebarOpen ? '' : 'hidden'}`}>
             <Sidebar data={linkData} />
           </div>
           <div className="flex-1 overflow-y-auto bg-primary lg:ml-28">
-            <div className="relative px-12 lg:pt-28 lg:pl-48 pt-24">
+            <div className="relative pl-3 lg:pt-28 lg:pl-48 pt-48">
               <div>
                 <h1 className="text-cyan-300 font-Rey text-4xl">{pageData.pageTitle}</h1>
                 <h2 className='h-px my-6 mt-12 bg-[#96969c] border-0' />
@@ -111,14 +126,17 @@ export default function MyPage({ pageData, linkData }) {
           </div>
         </div>
       </div>
-      <div className="fixed lg:hidden flex justify-between items-center top-16 w-full px-4 z-10">
-        <button ref={menuButtonRef} onClick={toggleSidebar} className="text-secondary font-Rey py-5 px-4 rounded ">Menu</button>
+      <div className="fixed lg:hidden flex justify-between items-center top-16 w-full px-4 z-20">
+      <button ref={menuButtonRef} onClick={toggleSidebar} className="text-secondary font-Rey py-5 px-4 rounded bg-primary ">
+          <span className="mr-2">{isSidebarOpen ? 'Close' : 'Menu'}</span>
+          {isSidebarOpen ? <i className="fas float-start text-2xl"></i> : null}
+        </button>
         {!isRightbarVisible && (
-          <button ref={rightbarButtonRef} onClick={toggleRightbar} className="text-secondary font-Rey my-5 px-4 rounded ">On This Page</button>
+          <button ref={rightbarButtonRef} onClick={toggleRightbar} className="text-secondary font-Rey my-5 px-4 rounded">On This Page</button>
         )}
       </div>
       <Rightbar
-        ref={rightbarRef}
+        ref={rightbarButtonRef}
         sections={pageData.sections}
         currentSection={currentSection}
         isVisible={isRightbarVisible || window.innerWidth >= 1024}

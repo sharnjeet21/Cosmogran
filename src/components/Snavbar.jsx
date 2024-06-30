@@ -31,10 +31,12 @@ const Navbar = ({ handleSearch }) => {
   ];
 
   return (
-    <div className={`fixed z-10 flex justify-between bg-primary items-center h-16 max-w-[100vw] w-[calc(100vw)] px-4 text-secondary text-xs pr-8 ${nav ? 'shadow-md' : ''}`}>
+    <div className={`fixed z-30 flex justify-between bg-primary items-center h-16 max-w-[100vw] w-[calc(100vw)] px-4 text-secondary text-xs pr-8 ${nav ? 'shadow-md' : ''}`}>
       <div className='flex items-center'>
         <img src={logo} alt="Logo" className="h-6 rounded-full" />
+        <Link to="/">
         <h1 className='text-base font-normal font-Rey text-secondary pl-2'>Cosmogran</h1>
+        </Link>
       </div>
 
       <div className='flex justify-start mx-36 flex-1'>
