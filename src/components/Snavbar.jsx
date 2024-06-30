@@ -6,9 +6,10 @@ import github from '../assets/github.png';
 import reddit from '../assets/reddit.png';
 import discord from '../assets/discord.svg';
 
-const Navbar = () => {
+const Navbar = ({ handleSearch }) => {
   const [nav, setNav] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [searchInput, setSearchInput] = useState('');
 
   const handleNav = () => {
     setNav(!nav);
@@ -18,16 +19,34 @@ const Navbar = () => {
     setSelectedItem(itemId);
   };
 
+  const handleSearchInputChange = (event) => {
+    const inputValue = event.target.value;
+    setSearchInput(inputValue);
+    handleSearch(inputValue); // Propagate search input change to parent component if needed
+  };
+
   const navItems = [
     { id: 1, text: 'Beginners Guide', path: 'https://rentry.co/fmhy-guides' },
     { id: 2, text: 'Glossary', path: 'https://rentry.org/The-Piracy-Glossary' }
   ];
 
   return (
-    <div className={`fixed z-10 flex justify-between bg-primary items-center h-16 max-w-[100vw] w-[calc(100vw)] px-4 text-white text-xs pr-8 ${nav ? 'shadow-md' : ''}`}>
+    <div className={`fixed z-10 flex justify-between bg-primary items-center h-16 max-w-[100vw] w-[calc(100vw)] px-4 text-secondary text-xs pr-8 ${nav ? 'shadow-md' : ''}`}>
       <div className='flex items-center'>
         <img src={logo} alt="Logo" className="h-6 rounded-full" />
         <h1 className='text-base font-normal font-Rey text-secondary pl-2'>Cosmogran</h1>
+      </div>
+
+      <div className='flex justify-start mx-36 flex-1'>
+        <div className="flex items-start">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="px-2 py-1 rounded-lg border bg-orange text-primary border-primary focus:outline-none focus:border-secondary hover:border-secondary "
+            value={searchInput}
+            onChange={handleSearchInputChange}
+          />
+        </div>
       </div>
 
       <div className='flex'>

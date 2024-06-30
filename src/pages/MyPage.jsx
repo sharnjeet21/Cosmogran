@@ -10,16 +10,21 @@ export default function MyPage({ pageData, linkData }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isRightbarVisible, setIsRightbarVisible] = useState(false);
   const [currentSection, setCurrentSection] = useState('');
+  const [searchInput, setSearchInput] = useState('');
+  const [filteredSections, setFilteredSections] = useState(pageData.sections); // Initially, show all sections
   const sidebarRef = useRef(null);
   const menuButtonRef = useRef(null);
   const rightbarButtonRef = useRef(null);
+  const rightbarRef = useRef(null); // Add a ref for the Rightbar
 
   useEffect(() => {
     const handleClickOutside = (event) => {
+      // Close sidebar if clicking outside
       if (sidebarRef.current && !sidebarRef.current.contains(event.target) && !menuButtonRef.current.contains(event.target)) {
         setIsSidebarOpen(false);
       }
-      if (rightbarButtonRef.current && !rightbarButtonRef.current.contains(event.target)) {
+      // Close rightbar if clicking outside
+      if (rightbarRef.current && !rightbarRef.current.contains(event.target) && !rightbarButtonRef.current.contains(event.target)) {
         setIsRightbarVisible(false);
       }
     };
@@ -30,18 +35,6 @@ export default function MyPage({ pageData, linkData }) {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
-
-  const toggleSidebar = (event) => {
-    event.stopPropagation();
-    setIsSidebarOpen(!isSidebarOpen);
-    setIsRightbarVisible(false);
-  };
-
-  const toggleRightbar = (event) => {
-    event.stopPropagation();
-    setIsRightbarVisible(!isRightbarVisible);
-    setIsSidebarOpen(false);
-  };
 
   useEffect(() => {
     const sections = document.querySelectorAll('section');
@@ -67,9 +60,37 @@ export default function MyPage({ pageData, linkData }) {
     };
   }, [pageData.sections]);
 
+  // Filter sections based on searchInput for main content (MySection)
+  useEffect(() => {
+    if (searchInput.trim() === '') {
+      setFilteredSections(pageData.sections);
+    } else {
+      const filtered = pageData.sections.filter(section =>
+        section.title.toLowerCase().includes(searchInput.toLowerCase())
+      );
+      setFilteredSections(filtered);
+    }
+  }, [searchInput, pageData.sections]);
+
+  const toggleSidebar = (event) => {
+    event.stopPropagation();
+    setIsSidebarOpen(!isSidebarOpen);
+    setIsRightbarVisible(false);
+  };
+
+  const toggleRightbar = (event) => {
+    event.stopPropagation();
+    setIsRightbarVisible(!isRightbarVisible);
+    setIsSidebarOpen(false);
+  };
+
+  const handleSearchInputChange = (inputValue) => {
+    setSearchInput(inputValue);
+  };
+
   return (
     <div>
-      <Snavbar />
+      <Snavbar handleSearch={handleSearchInputChange} />
       <Subbar isVisible={window.innerWidth < 768} />
       <div className="flex h-screen">
         <div ref={sidebarRef} className={`fixed z-50 top-0 w-64 h-full bg-primary overflow-y-auto scrollbar-hide lg:block ${isSidebarOpen ? '' : 'hidden'}`}>
@@ -80,7 +101,7 @@ export default function MyPage({ pageData, linkData }) {
             <div>
               <h1 className="text-cyan-300 font-Rey text-4xl">{pageData.pageTitle}</h1>
               <h2 className='h-px my-6 mt-12 bg-[#96969c] border-0' />
-              {pageData.sections.map((section, index) => (
+              {filteredSections.map((section, index) => (
                 <MySection key={index} title={section.title} section={section} />
               ))}
             </div>
@@ -94,7 +115,7 @@ export default function MyPage({ pageData, linkData }) {
           <button ref={rightbarButtonRef} onClick={toggleRightbar} className="text-secondary my-5 px-4 rounded ">On This Page</button>
         )}
       </div>
-      <Rightbar sections={pageData.sections} currentSection={currentSection} isVisible={isRightbarVisible || window.innerWidth >= 1024} />
+      <Rightbar ref={rightbarRef} sections={pageData.sections} currentSection={currentSection} isVisible={isRightbarVisible || window.innerWidth >= 1024} />
     </div>
   );
 }
