@@ -15,7 +15,7 @@ export default function MyPage({ pageData, linkData }) {
   const sidebarRef = useRef(null);
   const menuButtonRef = useRef(null);
   const rightbarButtonRef = useRef(null);
-  const rightbarRef = useRef(null); // Add a ref for the Rightbar
+  const rightbarRef = useRef(null); // Ref for the Rightbar component
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -91,31 +91,39 @@ export default function MyPage({ pageData, linkData }) {
   return (
     <div>
       <Snavbar handleSearch={handleSearchInputChange} />
-      <Subbar isVisible={window.innerWidth < 768} />
-      <div className="flex h-screen">
-        <div ref={sidebarRef} className={`fixed z-50 top-0 w-64 h-full bg-primary overflow-y-auto scrollbar-hide lg:block ${isSidebarOpen ? '' : 'hidden'}`}>
-          <Sidebar data={linkData} />
-        </div>
-        <div className="flex-1 overflow-y-auto bg-primary lg:ml-28">
-          <div className="relative px-12 lg:pt-28 lg:pl-48 pt-24">
-            <div>
-              <h1 className="text-cyan-300 font-Rey text-4xl">{pageData.pageTitle}</h1>
-              <h2 className='h-px my-6 mt-12 bg-[#96969c] border-0' />
-              {filteredSections.map((section, index) => (
-                <MySection key={index} title={section.title} section={section} />
-              ))}
+      <div className="relative">
+        <Subbar isVisible={window.innerWidth < 768} />
+        <div className="flex h-screen">
+          <div ref={sidebarRef} className={`fixed z-50 top-0 w-64 h-full bg-primary overflow-y-auto scrollbar-hide lg:block ${isSidebarOpen ? '' : 'hidden'}`}>
+            <Sidebar data={linkData} />
+          </div>
+          <div className="flex-1 overflow-y-auto bg-primary lg:ml-28">
+            <div className="relative px-12 lg:pt-28 lg:pl-48 pt-24">
+              <div>
+                <h1 className="text-cyan-300 font-Rey text-4xl">{pageData.pageTitle}</h1>
+                <h2 className='h-px my-6 mt-12 bg-[#96969c] border-0' />
+                {filteredSections.map((section, index) => (
+                  <MySection key={index} title={section.title} section={section} />
+                ))}
+              </div>
+              <h2 className="text-sm text-gray-400 no-underline mt-1 block"></h2>
             </div>
-            <h2 className="text-sm text-gray-400 no-underline mt-1 block"></h2>
           </div>
         </div>
       </div>
-      <div className="fixed lg:hidden flex justify-between items-center top-16 w-full px-4 z-0">
-        <button ref={menuButtonRef} onClick={toggleSidebar} className="text-secondary py-5 px-4 rounded ">Menu</button>
+      <div className="fixed lg:hidden flex justify-between items-center top-16 w-full px-4 z-10">
+        <button ref={menuButtonRef} onClick={toggleSidebar} className="text-secondary font-Rey py-5 px-4 rounded ">Menu</button>
         {!isRightbarVisible && (
-          <button ref={rightbarButtonRef} onClick={toggleRightbar} className="text-secondary my-5 px-4 rounded ">On This Page</button>
+          <button ref={rightbarButtonRef} onClick={toggleRightbar} className="text-secondary font-Rey my-5 px-4 rounded ">On This Page</button>
         )}
       </div>
-      <Rightbar ref={rightbarRef} sections={pageData.sections} currentSection={currentSection} isVisible={isRightbarVisible || window.innerWidth >= 1024} />
+      <Rightbar
+        ref={rightbarRef}
+        sections={pageData.sections}
+        currentSection={currentSection}
+        isVisible={isRightbarVisible || window.innerWidth >= 1024}
+        onClose={() => setIsRightbarVisible(false)} // Pass the onClose function
+      />
     </div>
   );
 }
