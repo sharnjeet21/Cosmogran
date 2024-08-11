@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import cosmos from '../assets/cosmos.gif';
-import logo2 from '../assets/logo2.png'
 import HomeCard from '../components/HomeCard';
 import HomeButton from '../components/HomeButton';
 import movie from '../assets/movie.svg';
