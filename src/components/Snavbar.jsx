@@ -35,7 +35,7 @@ const Navbar = ({ handleSearch }) => {
       <div className='flex items-center'>
         <img src={logo} alt="Logo" className="h-6 rounded-full" />
         <Link to="/">
-        <h1 className='text-base font-normal font-Rey text-secondary pl-2'>Cosmogran</h1>
+          <h1 className='text-base font-normal font-Rey text-secondary pl-2'>Cosmogran</h1>
         </Link>
       </div>
 
@@ -44,12 +44,13 @@ const Navbar = ({ handleSearch }) => {
           <input
             type="text"
             placeholder="Search..."
-            className="px-2 py-1 rounded-lg border bg-orange text-primary border-primary focus:outline-none focus:border-secondary hover:border-secondary "
+            className="px-2 py-1 rounded-lg border bg-orange text-primary border-primary focus:outline-none focus:border-secondary hover:border-secondary placeholder-primary"
             value={searchInput}
             onChange={handleSearchInputChange}
           />
         </div>
       </div>
+
 
       <div className='flex'>
         <ul className='hidden md:flex text-secondary font-Outfit'>
