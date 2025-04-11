@@ -1,8 +1,35 @@
-# React + Vite
+# 🌐 Cosmogran
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A dynamic web application to **organize global links** under categorized titles — making web exploration faster, smarter, and more intuitive.
 
-Currently, two official plugins are available:
+![Cosmogran Screenshot](./screenshot.png) <!-- Optional: Replace with actual image path -->
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+## ✨ Features
+
+- 🔖 Categorized and accessible link collections
+- 📲 Fully responsive UI using **React.js** and **Tailwind CSS**
+- 🔍 Real-time search for quick link discovery
+- 💡 Smooth navigation and fast performance
+
+---
+
+## 🚀 Tech Stack
+
+| Technology     | Description                              |
+|----------------|------------------------------------------|
+| React.js       | Frontend framework                       |
+| Tailwind CSS   | Utility-first CSS for styling            |
+| JavaScript     | Interactive search and UI logic          |
+| Git & GitHub   | Version control and code collaboration   |
+
+---
+
+## 🛠️ Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/cosmogran.git
+cd cosmogran
