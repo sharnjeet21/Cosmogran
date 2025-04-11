@@ -2,7 +2,7 @@
 
 > A dynamic web application to **organize global links** under categorized titles — making web exploration faster, smarter, and more intuitive.
 
-![Cosmogran Screenshot](./screenshot.png) <!-- Optional: Replace with actual image path -->
+![Cosmogran Screenshot](./cosmogran.png) <!-- Optional: Replace with actual image path -->
 
 ---
 
