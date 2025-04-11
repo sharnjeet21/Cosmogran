@@ -2,6 +2,10 @@
 
 > A dynamic web application to **organize global links** under categorized titles — making web exploration faster, smarter, and more intuitive.
 
+🔗 **Live Site:** [cosmogran.vercel.app](https://cosmogran.vercel.app)
+
+> A dynamic web application to **organize global links** under categorized titles — making web exploration faster, smarter, and more intuitive.
+
 ![Cosmogran Screenshot](./cosmogran.png) <!-- Optional: Replace with actual image path -->
 
 ---
@@ -26,10 +30,9 @@
 
 ---
 
-## 🛠️ Getting Started
+## 📷 Demo
 
-### 1. Clone the Repository
+Check out the live site here:  
+👉 [https://cosmogran.vercel.app](https://cosmogran.vercel.app)
 
-```bash
-git clone https://github.com/your-username/cosmogran.git
-cd cosmogran
+
